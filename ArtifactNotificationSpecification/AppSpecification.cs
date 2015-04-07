@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using ArtifactNotification;
 using NUnit.Framework;
 using TddEbook.TddToolkit;
 
@@ -16,7 +17,7 @@ namespace ArtifactNotificationSpecification
         context.StartApplication().ClearRecordedEvents();
         var changedPathDir = Any.String();
         var changedPathFile = Any.String();
-        var changedPath = Path.Combine(changedPathDir, changedPathFile);
+        var changedPath = new ChangedPath(changedPathDir, changedPathFile);
 
         //WHEN
         context.FileSystem.ReportChangedPath(changedPathDir, changedPathFile);
@@ -27,14 +28,14 @@ namespace ArtifactNotificationSpecification
       }
 
       [Test]
-      public void ShouldXXXXXXXXXXXXXXXXXXXX()
+      public void ShouldOpenPathViewWhenOpenFolderIsInvokedOnPathThatExists()
       {
         //GIVEN
         var context = new ArtifactNotificationDriver();
         context.StartApplication();
         var changedPathDir = Any.String();
         var changedPathFile = Any.String();
-        var changedPath = Path.Combine(changedPathDir, changedPathFile);
+        var changedPath = new ChangedPath(changedPathDir, changedPathFile);
 
         context.FileSystem.ReportChangedPath(changedPathDir, changedPathFile);
         context.ClearRecordedEvents();
@@ -48,16 +49,7 @@ namespace ArtifactNotificationSpecification
         context.ClientSideInterface.ShouldOpenPathView(changedPath);
       }
 
-      [Test]
-      public void ShouldBEHAVIOR()
-      {
-        //GIVEN
-        var p1 = "aaaaaaaaaaaaa";
-        //WHEN
 
-        //THEN
-        XAssert.Equal(new FileInfo(p1), new FileInfo(p1));
-      }
 
       //TODO handle all GUI options in both states
 
@@ -130,4 +122,5 @@ namespace ArtifactNotificationSpecification
     }
     
   }
+
 }

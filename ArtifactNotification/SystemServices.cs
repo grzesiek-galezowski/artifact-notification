@@ -4,8 +4,8 @@ namespace ArtifactNotification
 {
   public interface SystemServices
   {
-    void AddToClipboard(string fullPath);
-    void StartExplorer(FileInfo fullPath);
-    bool PathExists(FileInfo fullPath);
+    void AddToClipboard(ChangedPath fullPath);
+    void StartExplorer(ChangedPath fullPath);
+    bool PathExists(ChangedPath fullPath);
   }
 }

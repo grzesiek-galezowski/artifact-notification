@@ -55,7 +55,7 @@ namespace ArtifactNotification
       _useCases.OpenFolder(sender, e);
     }
 
-    public void UpdateLastDetectedChangedPath(string fullPath)
+    public void UpdateLastDetectedChangedPath(ChangedPath fullPath)
     {
       Dispatcher.Invoke(() =>
       {
@@ -63,7 +63,7 @@ namespace ArtifactNotification
       });
     }
 
-    public void UpdateLastPathCopiedToClipboard(FileInfo fullPath)
+    public void UpdateLastPathCopiedToClipboard(ChangedPath fullPath)
     {
       FileInClipboard.Content = fullPath;
     }

@@ -16,9 +16,9 @@ namespace ArtifactNotificationSpecification
       _handControlledFileSystemWatchers = handControlledFileSystemWatchers;
     }
 
-    public void MakePathExist(string anyPath)
+    public void MakePathExist(ChangedPath anyPath)
     {
-      _systemServices.PathExists(new FileInfo(anyPath)).Returns(true);
+      _systemServices.PathExists(anyPath).Returns(true);
     }
 
     public void ReportChangedPath(string changedPathDirectory, string changedPathFile)

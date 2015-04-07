@@ -7,7 +7,7 @@ namespace ArtifactNotification
     private readonly DiagnosticMessages _diagnosticMessages;
     private readonly FileSystemWatchers _watchers;
     private readonly SystemServices _systemServices;
-    private FileInfo _fullPath;
+    private ChangedPath _fullPath;
 
     public PathContext(DiagnosticMessages diagnosticMessages, FileSystemWatchers watchers, SystemServices systemServices)
     {
@@ -18,7 +18,7 @@ namespace ArtifactNotification
 
     private void SaveFileToClipboardInPathState(ApplicationEventsPresenter presenter)
     {
-      _systemServices.AddToClipboard(_fullPath.FullName);
+      _systemServices.AddToClipboard(_fullPath);
       presenter.UpdateLastPathCopiedToClipboard(_fullPath);
     }
 
@@ -77,10 +77,10 @@ namespace ArtifactNotification
       _diagnosticMessages.NotifyApplicationStarted();
     }
 
-    public void Save(string fullPath, ApplicationEventsPresenter applicationEventsPresenter)
+    public void Save(ChangedPath fullPath, ApplicationEventsPresenter applicationEventsPresenter)
     {
       _diagnosticMessages.NotifyMonitoredPathChanged(fullPath);
-      _fullPath = new FileInfo(fullPath);
+      _fullPath = fullPath;
       applicationEventsPresenter.UpdateLastDetectedChangedPath(fullPath);
     }
   }

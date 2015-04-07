@@ -59,6 +59,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ApplicationUseCases.cs" />
+    <Compile Include="ChangedPath.cs" />
     <Compile Include="CompositionRoot.cs" />
     <Compile Include="SystemServices.cs" />
     <Compile Include="WindowsSystemServices.cs" />

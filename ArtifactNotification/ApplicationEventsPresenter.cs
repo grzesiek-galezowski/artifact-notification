@@ -4,8 +4,8 @@ namespace ArtifactNotification
 {
   public interface ApplicationEventsPresenter
   {
-    void UpdateLastDetectedChangedPath(string fullPath);
-    void UpdateLastPathCopiedToClipboard(FileInfo fullPath);
+    void UpdateLastDetectedChangedPath(ChangedPath fullPath);
+    void UpdateLastPathCopiedToClipboard(ChangedPath fullPath);
     void UpdateMonitoredPath(string description);
   }
 }

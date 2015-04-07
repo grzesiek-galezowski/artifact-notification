@@ -21,7 +21,7 @@ namespace ArtifactNotification
     {
       try
       {
-        _pathContext.Save(e.FullPath, _presenter);
+        _pathContext.Save(new ChangedPath(e.FullPath), _presenter);
       }
       catch (Exception ex)
       {

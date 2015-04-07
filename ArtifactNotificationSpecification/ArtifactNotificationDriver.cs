@@ -94,9 +94,9 @@ namespace ArtifactNotificationSpecification
       _useCases.CopyFileToClipboard(this, new RoutedEventArgs());
     }
 
-    public void ShouldOpenPathView(string path)
+    public void ShouldOpenPathView(ArtifactNotification.ChangedPath path)
     {
-      _systemServices.Received(1).StartExplorer(new FileInfo(path));
+      _systemServices.Received(1).StartExplorer(path);
     }
   }
 
@@ -126,7 +126,7 @@ namespace ArtifactNotificationSpecification
       _presenter = presenter;
     }
 
-    public void ShouldBeUpdatedTo(string changedPath)
+    public void ShouldBeUpdatedTo(ChangedPath changedPath)
     {
       _presenter.Received(1).UpdateLastDetectedChangedPath(changedPath);
     }
@@ -146,7 +146,7 @@ namespace ArtifactNotificationSpecification
       _diagnosticMessages.Received(1).NotifyApplicationStarted();
     }
 
-    public void ShouldDisplayMessageThatThereWasChangeTo(string changedPath)
+    public void ShouldDisplayMessageThatThereWasChangeTo(ArtifactNotification.ChangedPath changedPath)
     {
       _diagnosticMessages.Received(1).NotifyMonitoredPathChanged(changedPath);
     }

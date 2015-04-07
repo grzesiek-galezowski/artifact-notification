@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="ArtifactNotificationDriver.cs" />
     <Compile Include="AppSpecification.cs" />
+    <Compile Include="ChangedPathSpecification.cs" />
     <Compile Include="FakeFileSystem.cs" />
     <Compile Include="ManuallyTriggerableFileSystemWatchers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

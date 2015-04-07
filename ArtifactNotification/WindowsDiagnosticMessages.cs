@@ -10,7 +10,7 @@ namespace ArtifactNotification
     void WarnNothingWillHappen();
     void NotifyOnError(Exception ex);
     void NotifyApplicationStarted();
-    void NotifyMonitoredPathChanged(string fullPath);
+    void NotifyMonitoredPathChanged(ChangedPath fullPath);
   }
 
   public class WindowsDiagnosticMessages : DiagnosticMessages
@@ -43,9 +43,9 @@ namespace ArtifactNotification
       _taskbarIcon.ShowBalloonTip("Artifact Notification", "Monitoring Started", BalloonIcon.Info);
     }
 
-    public void NotifyMonitoredPathChanged(string fullPath)
+    public void NotifyMonitoredPathChanged(ChangedPath fullPath)
     {
-      _dispatcher.Invoke(() => _taskbarIcon.ShowBalloonTip("Changed", fullPath, BalloonIcon.Info));
+      _dispatcher.Invoke(() => _taskbarIcon.ShowBalloonTip("Changed", fullPath.ToString(), BalloonIcon.Info));
     }
   }
 }
