@@ -6,20 +6,17 @@ namespace ArtifactNotification
   public class PathContext : PathOperationsContext
   {
     //bug make not public
-    public readonly DiagnosticMessages _diagnosticMessages;
-    public readonly FileSystemWatchers _watchers;
-    public readonly SystemServices _systemServices;
-    public ChangedPath _fullPath;
+    private readonly DiagnosticMessages _diagnosticMessages;
+    private readonly FileSystemWatchers _watchers;
     private PathState _currentState;
     private readonly PathStates _pathStates;
 
-    public PathContext(DiagnosticMessages diagnosticMessages, FileSystemWatchers watchers, SystemServices systemServices, PathStates pathStates)
+    public PathContext(DiagnosticMessages diagnosticMessages, FileSystemWatchers watchers, PathStates pathStates)
     {
       _diagnosticMessages = diagnosticMessages;
       _watchers = watchers;
-      _systemServices = systemServices;
       _pathStates = pathStates;
-      _currentState = _pathStates.PathNotDetectedState;
+      _currentState = _pathStates.PathNotDetectedState();
     }
 
     public void CopyFileToClipboard(ApplicationEventsPresenter presenter)
@@ -45,25 +42,9 @@ namespace ArtifactNotification
 
     public void Save(ChangedPath fullPath, ApplicationEventsPresenter applicationEventsPresenter)
     {
+      _currentState = _pathStates.PathDetectedState(fullPath);
       _diagnosticMessages.NotifyMonitoredPathChanged(fullPath);
-      _fullPath = fullPath;
-      _currentState = _pathStates.PathDetectedState;
       applicationEventsPresenter.UpdateLastDetectedChangedPath(fullPath);
-    }
-
-    public bool PathExists()
-    {
-      return _systemServices.PathExists(_fullPath);
-    }
-
-    public void AddPathItemToClipboard()
-    {
-      _systemServices.AddToClipboard(_fullPath);
-    }
-
-    public void NotifyOnItemAddedToClipboard(ApplicationEventsPresenter presenter)
-    {
-      presenter.UpdateLastPathCopiedToClipboard(_fullPath);
     }
 
     public void WarnNothingWillHappen()

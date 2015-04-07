@@ -2,29 +2,27 @@
 {
   public interface PathStates
   {
-    PathDetectedState PathDetectedState { get; }
-    PathNotDetectedState PathNotDetectedState { get; }
+    PathDetectedState PathDetectedState(ChangedPath fullPath);
+    PathNotDetectedState PathNotDetectedState();
   }
 
   public class ConcretePathStates : PathStates
   {
-    private readonly PathNotDetectedState _pathNotDetectedState;
-    private readonly PathDetectedState _pathDetectedState;
+    private readonly SystemServices _systemServices;
 
-    public ConcretePathStates()
+    public ConcretePathStates(SystemServices systemServices)
     {
-      _pathNotDetectedState = new PathNotDetectedState();
-      _pathDetectedState = new PathDetectedState();
+      _systemServices = systemServices;
     }
 
-    public PathDetectedState PathDetectedState
+    public PathDetectedState PathDetectedState(ChangedPath fullPath)
     {
-      get { return _pathDetectedState; }
+      return new PathDetectedState(fullPath, _systemServices);
     }
 
-    public PathNotDetectedState PathNotDetectedState
+    public PathNotDetectedState PathNotDetectedState()
     {
-      get { return _pathNotDetectedState; }
+      return new PathNotDetectedState();
     }
   }
 }

@@ -12,7 +12,7 @@ namespace ArtifactNotification
       FileSystemWatcherFactory fileSystemWatcherFactory, SystemServices systemServices)
     {
       _watchers = fileSystemWatcherFactory.CreateFileSystemWatchers();
-      var pathContext = new PathContext(windowsDiagnosticMessages, _watchers, systemServices, new ConcretePathStates());
+      var pathContext = new PathContext(windowsDiagnosticMessages, _watchers, new ConcretePathStates(systemServices));
 
       var applicationUseCases = new SynchronizedUseCases(new ApplicationUseCases(windowsDiagnosticMessages, pathContext, applicationEventsPresenter));
       _watchers.ReportChangesTo(applicationUseCases);

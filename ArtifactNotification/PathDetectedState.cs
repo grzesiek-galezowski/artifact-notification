@@ -2,23 +2,30 @@ namespace ArtifactNotification
 {
   public class PathDetectedState : PathState
   {
+    private readonly ChangedPath _fullPath;
+    private readonly SystemServices _systemServices;
+
+    public PathDetectedState(ChangedPath fullPath, SystemServices systemServices)
+    {
+      _fullPath = fullPath;
+      _systemServices = systemServices;
+    }
+
     public void SaveToClipboard(PathContext context, ApplicationEventsPresenter presenter)
     {
-      if (context.PathExists())
+      if (_systemServices.PathExists(_fullPath))
       {
-        context.AddPathItemToClipboard();
-        context.NotifyOnItemAddedToClipboard(presenter);
+        _systemServices.AddToClipboard(_fullPath);
+        presenter.UpdateLastPathCopiedToClipboard(_fullPath);
       }
     }
 
     public void OpenFolder(PathContext pathContext)
     {
-      //TODO refactor
-      if (pathContext._systemServices.PathExists(pathContext._fullPath))
+      if (_systemServices.PathExists(_fullPath))
       {
-        pathContext._systemServices.StartExplorer(pathContext._fullPath);
+        _systemServices.StartExplorer(_fullPath);
       }
     }
-
   }
 }
