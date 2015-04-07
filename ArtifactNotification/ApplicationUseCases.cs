@@ -41,6 +41,18 @@ namespace ArtifactNotification
       }
     }
 
+    public void ChangeFilters(string filters)
+    {
+      try
+      {
+        _pathContext.ChangeFilters(filters);
+      }
+      catch (Exception e)
+      {
+        _diagnosticMessages.NotifyOnError(e);
+      }
+    }
+
     public void OpenFolder(object sender, RoutedEventArgs e)
     {
       try

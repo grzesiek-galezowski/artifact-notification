@@ -16,5 +16,10 @@ namespace ArtifactNotificationSpecification.FakeContext
     {
       _presenter.Received(1).UpdateLastDetectedChangedPath(changedPath);
     }
+
+    public void ShouldNotBeUpdated()
+    {
+      _presenter.DidNotReceive().UpdateLastDetectedChangedPath(Arg.Any<ChangedPath>());
+    }
   }
 }

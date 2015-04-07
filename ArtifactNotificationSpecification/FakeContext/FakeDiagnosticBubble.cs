@@ -21,5 +21,10 @@ namespace ArtifactNotificationSpecification.FakeContext
     {
       _diagnosticMessages.Received(1).NotifyMonitoredPathChanged(changedPath);
     }
+
+    public void ShouldNotDisplayAnything()
+    {
+      _diagnosticMessages.Received(0).NotifyMonitoredPathChanged(Arg.Any<ChangedPath>());
+    }
   }
 }

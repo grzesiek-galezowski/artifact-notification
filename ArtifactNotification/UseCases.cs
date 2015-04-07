@@ -8,6 +8,7 @@ namespace ArtifactNotification
     void OnChanged(object source, FileSystemEventArgs e);
     void OpenFolder(object sender, RoutedEventArgs e);
     void CopyFileToClipboard(object sender, RoutedEventArgs e);
+    void ChangeFilters(string filters);
   }
 
   public class SynchronizedUseCases : UseCases
@@ -42,6 +43,14 @@ namespace ArtifactNotification
       lock (_syncRoot)
       {
         _innerObserver.CopyFileToClipboard(sender, e);
+      }
+    }
+
+    public void ChangeFilters(string filters)
+    {
+      lock (_syncRoot)
+      {
+        _innerObserver.ChangeFilters(filters);
       }
     }
   }

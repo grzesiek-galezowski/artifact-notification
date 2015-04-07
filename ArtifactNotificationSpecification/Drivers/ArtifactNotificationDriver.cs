@@ -66,5 +66,10 @@ namespace ArtifactNotificationSpecification.Drivers
       _systemServices.ClearReceivedCalls();
     }
 
+    public ArtifactNotificationDriver ConfigureFilters(string filters)
+    {
+      _useCases.ChangeFilters(filters);
+      return this;
+    }
   }
 }

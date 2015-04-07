@@ -6,5 +6,6 @@
     void CopyFileToClipboard(ApplicationEventsPresenter presenter);
     void OpenFolder();
     void Initialize(ApplicationEventsPresenter applicationEventsPresenter);
+    void ChangeFilters(string filters);
   }
 }

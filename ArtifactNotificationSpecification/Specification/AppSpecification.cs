@@ -25,6 +25,22 @@ namespace ArtifactNotificationSpecification.Specification
         context.LastDetectedPathChange.ShouldBeUpdatedTo(changedPath);
       }
 
+      [Test]
+      public void ShouldNotUpdateAnythingWhenChangeIsDetectedForFileThatDoesNotMatchFilter()
+      {
+        //GIVEN
+        var context = new ArtifactNotificationDriver();
+        context.StartApplication().ConfigureFilters("*.txt").ClearRecordedEvents();
+        var anyDir = Any.String();
+        var nonTextFileName = Any.StringNotContaining(".txt");
+        
+        //WHEN
+        context.FileSystem.ReportChangedPath(anyDir, nonTextFileName);
+
+        //THEN
+        context.DiagnosticBubble.ShouldNotDisplayAnything();
+        context.LastDetectedPathChange.ShouldNotBeUpdated();
+      }
 
 
       //TODO handle all GUI options in both states

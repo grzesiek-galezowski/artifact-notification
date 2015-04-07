@@ -61,6 +61,10 @@
     <Compile Include="ApplicationUseCases.cs" />
     <Compile Include="ChangedPath.cs" />
     <Compile Include="CompositionRoot.cs" />
+    <Compile Include="PathNotDetectedState.cs" />
+    <Compile Include="PathDetectedState.cs" />
+    <Compile Include="PathState.cs" />
+    <Compile Include="ConcretePathStates.cs" />
     <Compile Include="SystemServices.cs" />
     <Compile Include="WindowsSystemServices.cs" />
     <Page Include="MainWindow.xaml">
