@@ -1,9 +1,10 @@
 using System.IO;
 using ArtifactNotification;
+using ArtifactNotificationSpecification.TestingUtilities;
 using NSubstitute;
 using TddEbook.TddToolkit;
 
-namespace ArtifactNotificationSpecification
+namespace ArtifactNotificationSpecification.FakeContext
 {
   public class FakeFileSystem
   {

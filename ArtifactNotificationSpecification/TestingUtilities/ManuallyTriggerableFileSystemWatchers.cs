@@ -2,7 +2,7 @@
 using ArtifactNotification;
 using TddEbook.TddToolkit;
 
-namespace ArtifactNotificationSpecification
+namespace ArtifactNotificationSpecification.TestingUtilities
 {
   public class ManuallyTriggerableFileSystemWatchers : FileSystemWatchers
   {
