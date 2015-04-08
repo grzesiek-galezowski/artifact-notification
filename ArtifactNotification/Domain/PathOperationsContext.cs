@@ -1,4 +1,4 @@
-﻿namespace ArtifactNotification
+﻿namespace ArtifactNotification.Domain
 {
   public interface PathOperationsContext
   {

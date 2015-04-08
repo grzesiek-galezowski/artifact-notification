@@ -1,8 +1,9 @@
 ﻿using System;
 using System.IO;
 using System.Windows;
+using ArtifactNotification.Ports;
 
-namespace ArtifactNotification
+namespace ArtifactNotification.Domain
 {
   public class ApplicationUseCases : UseCases
   {

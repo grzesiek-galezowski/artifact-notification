@@ -1,18 +1,12 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Threading;
+using ArtifactNotification.Domain;
+using ArtifactNotification.Ports;
 using Hardcodet.Wpf.TaskbarNotification;
 
-namespace ArtifactNotification
+namespace ArtifactNotification.Adapters
 {
-  public interface DiagnosticMessages
-  {
-    void WarnNothingWillHappen();
-    void NotifyOnError(Exception ex);
-    void NotifyApplicationStarted();
-    void NotifyMonitoredPathChanged(ChangedPath fullPath);
-  }
-
   public class WindowsDiagnosticMessages : DiagnosticMessages
   {
     private readonly TaskbarIcon _taskbarIcon;

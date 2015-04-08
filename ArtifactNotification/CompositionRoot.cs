@@ -1,4 +1,6 @@
 using System;
+using ArtifactNotification.Domain;
+using ArtifactNotification.Ports;
 
 namespace ArtifactNotification
 {

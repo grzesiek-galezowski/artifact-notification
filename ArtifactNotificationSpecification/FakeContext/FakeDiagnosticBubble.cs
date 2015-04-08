@@ -1,4 +1,6 @@
 using ArtifactNotification;
+using ArtifactNotification.Domain;
+using ArtifactNotification.Ports;
 using NSubstitute;
 
 namespace ArtifactNotificationSpecification.FakeContext
@@ -17,7 +19,7 @@ namespace ArtifactNotificationSpecification.FakeContext
       _diagnosticMessages.Received(1).NotifyApplicationStarted();
     }
 
-    public void ShouldDisplayMessageThatThereWasChangeTo(ArtifactNotification.ChangedPath changedPath)
+    public void ShouldDisplayMessageThatThereWasChangeTo(ChangedPath changedPath)
     {
       _diagnosticMessages.Received(1).NotifyMonitoredPathChanged(changedPath);
     }

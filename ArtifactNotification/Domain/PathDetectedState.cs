@@ -1,4 +1,6 @@
-namespace ArtifactNotification
+using ArtifactNotification.Ports;
+
+namespace ArtifactNotification.Domain
 {
   public class PathDetectedState : PathState
   {

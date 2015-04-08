@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Windows;
 
-namespace ArtifactNotification
+namespace ArtifactNotification.Ports
 {
   public interface UseCases
   {

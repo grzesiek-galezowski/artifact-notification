@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using ArtifactNotification.Ports;
 
-namespace ArtifactNotification
+namespace ArtifactNotification.Adapters
 {
-  public interface FileSystemWatcherFactory
-  {
-    FileSystemWatchers CreateFileSystemWatchers();
-  }
-
   public class WindowsFileSystemWatcherFactory : FileSystemWatcherFactory
   {
     public FileSystemWatchers CreateFileSystemWatchers()

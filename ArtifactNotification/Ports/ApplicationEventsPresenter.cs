@@ -1,6 +1,6 @@
-﻿using System.IO;
+﻿using ArtifactNotification.Domain;
 
-namespace ArtifactNotification
+namespace ArtifactNotification.Ports
 {
   public interface ApplicationEventsPresenter
   {

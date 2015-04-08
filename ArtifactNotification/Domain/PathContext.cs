@@ -1,7 +1,6 @@
-﻿using System;
-using System.IO;
+﻿using ArtifactNotification.Ports;
 
-namespace ArtifactNotification
+namespace ArtifactNotification.Domain
 {
   public class PathContext : PathOperationsContext
   {

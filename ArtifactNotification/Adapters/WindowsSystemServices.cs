@@ -1,8 +1,9 @@
 ﻿using System.Diagnostics;
-using System.IO;
 using System.Windows;
+using ArtifactNotification.Domain;
+using ArtifactNotification.Ports;
 
-namespace ArtifactNotification
+namespace ArtifactNotification.Adapters
 {
   public class WindowsSystemServices : SystemServices
   {

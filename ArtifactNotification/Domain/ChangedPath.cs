@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace ArtifactNotification
+namespace ArtifactNotification.Domain
 {
   public class ChangedPath : IEquatable<ChangedPath>
   {

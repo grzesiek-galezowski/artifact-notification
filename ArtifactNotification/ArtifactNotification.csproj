@@ -61,16 +61,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ApplicationUseCases.cs" />
-    <Compile Include="ChangedPath.cs" />
+    <Compile Include="Ports\FileSystemWatchers.cs" />
+    <Compile Include="Ports\FileSystemWatcherFactory.cs" />
+    <Compile Include="Ports\DiagnosticMessages.cs" />
+    <Compile Include="Domain\ApplicationUseCases.cs" />
+    <Compile Include="Domain\ChangedPath.cs" />
     <Compile Include="CompositionRoot.cs" />
-    <Compile Include="PathNotDetectedState.cs" />
-    <Compile Include="PathDetectedState.cs" />
-    <Compile Include="PathState.cs" />
-    <Compile Include="ConcretePathStates.cs" />
-    <Compile Include="SystemServices.cs" />
-    <Compile Include="WindowsSystemServices.cs" />
-    <Page Include="MainWindow.xaml">
+    <Compile Include="Domain\PathNotDetectedState.cs" />
+    <Compile Include="Domain\PathDetectedState.cs" />
+    <Compile Include="Domain\PathState.cs" />
+    <Compile Include="Domain\ConcretePathStates.cs" />
+    <Compile Include="Ports\SystemServices.cs" />
+    <Compile Include="Adapters\WindowsSystemServices.cs" />
+    <Page Include="Adapters\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -78,19 +81,19 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ApplicationEventsPresenter.cs" />
-    <Compile Include="WindowsDiagnosticMessages.cs" />
-    <Compile Include="UseCases.cs" />
-    <Compile Include="WindowsFileSystemWatcherFactory.cs" />
-    <Compile Include="WindowsFileSystemWatchers.cs" />
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Ports\ApplicationEventsPresenter.cs" />
+    <Compile Include="Adapters\WindowsDiagnosticMessages.cs" />
+    <Compile Include="Ports\UseCases.cs" />
+    <Compile Include="Adapters\WindowsFileSystemWatcherFactory.cs" />
+    <Compile Include="Adapters\WindowsFileSystemWatchers.cs" />
+    <Compile Include="Adapters\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PathContext.cs" />
-    <Compile Include="PathOperationsContext.cs" />
+    <Compile Include="Domain\PathContext.cs" />
+    <Compile Include="Domain\PathOperationsContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

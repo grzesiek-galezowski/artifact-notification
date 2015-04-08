@@ -1,4 +1,5 @@
 ﻿using ArtifactNotification;
+using ArtifactNotification.Domain;
 using ArtifactNotificationSpecification.Drivers;
 using NUnit.Framework;
 using TddEbook.TddToolkit;

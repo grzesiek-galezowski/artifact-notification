@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using ArtifactNotification.Ports;
 
-namespace ArtifactNotification
+namespace ArtifactNotification.Adapters
 {
-  public interface FileSystemWatchers : IDisposable
-  {
-    string Description();
-    void ReportChangesTo(UseCases observer);
-  }
-
   public class WindowsFileSystemWatchers : FileSystemWatchers
   {
     private readonly List<FileSystemWatcher> _watchers;

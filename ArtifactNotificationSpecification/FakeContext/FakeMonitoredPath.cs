@@ -1,4 +1,5 @@
 using ArtifactNotification;
+using ArtifactNotification.Ports;
 using ArtifactNotificationSpecification.TestingUtilities;
 using NSubstitute;
 

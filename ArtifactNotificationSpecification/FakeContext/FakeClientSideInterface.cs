@@ -1,5 +1,7 @@
 using System.Windows;
 using ArtifactNotification;
+using ArtifactNotification.Domain;
+using ArtifactNotification.Ports;
 using NSubstitute;
 
 namespace ArtifactNotificationSpecification.FakeContext
@@ -32,7 +34,7 @@ namespace ArtifactNotificationSpecification.FakeContext
       _useCases.CopyFileToClipboard(this, new RoutedEventArgs());
     }
 
-    public void ShouldOpenPathView(ArtifactNotification.ChangedPath path)
+    public void ShouldOpenPathView(ChangedPath path)
     {
       _systemServices.Received(1).StartExplorer(path);
     }
