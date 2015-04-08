@@ -2,7 +2,7 @@
 {
   public interface PathStates
   {
-    PathDetectedState PathDetectedState(ChangedPath fullPath);
+    PathDetectedState ForDetectedChangeTo(ChangedPath fullPath);
     PathNotDetectedState PathNotDetectedState();
   }
 
@@ -19,7 +19,7 @@
       _applicationEventsPresenter = applicationEventsPresenter;
     }
 
-    public PathDetectedState PathDetectedState(ChangedPath fullPath)
+    public PathDetectedState ForDetectedChangeTo(ChangedPath fullPath)
     {
       return new PathDetectedState(fullPath, _systemServices, _applicationEventsPresenter);
     }

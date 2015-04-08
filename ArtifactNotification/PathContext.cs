@@ -5,7 +5,6 @@ namespace ArtifactNotification
 {
   public class PathContext : PathOperationsContext
   {
-    //bug make not public
     private readonly DiagnosticMessages _diagnosticMessages;
     private readonly FileSystemWatchers _watchers;
     private readonly ApplicationEventsPresenter _applicationEventsPresenter;
@@ -48,7 +47,7 @@ namespace ArtifactNotification
 
     public void Save(ChangedPath fullPath)
     {
-      _currentState = _pathStates.PathDetectedState(fullPath);
+      _currentState = _pathStates.ForDetectedChangeTo(fullPath);
       _diagnosticMessages.NotifyMonitoredPathChanged(fullPath);
       _applicationEventsPresenter.UpdateLastDetectedChangedPath(fullPath);
     }
