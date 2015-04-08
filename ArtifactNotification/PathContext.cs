@@ -46,11 +46,6 @@ namespace ArtifactNotification
       _diagnosticMessages.NotifyMonitoredPathChanged(fullPath);
       applicationEventsPresenter.UpdateLastDetectedChangedPath(fullPath);
     }
-
-    public void WarnNothingWillHappen()
-    {
-      _diagnosticMessages.WarnNothingWillHappen();
-    }
   }
 
 }

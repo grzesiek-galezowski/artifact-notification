@@ -9,10 +9,12 @@
   public class ConcretePathStates : PathStates
   {
     private readonly SystemServices _systemServices;
+    private readonly DiagnosticMessages _diagnosticMessages;
 
-    public ConcretePathStates(SystemServices systemServices)
+    public ConcretePathStates(SystemServices systemServices, DiagnosticMessages diagnosticMessages)
     {
       _systemServices = systemServices;
+      _diagnosticMessages = diagnosticMessages;
     }
 
     public PathDetectedState PathDetectedState(ChangedPath fullPath)
@@ -22,7 +24,7 @@
 
     public PathNotDetectedState PathNotDetectedState()
     {
-      return new PathNotDetectedState();
+      return new PathNotDetectedState(_diagnosticMessages);
     }
   }
 }

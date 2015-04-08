@@ -36,5 +36,10 @@ namespace ArtifactNotificationSpecification.FakeContext
     {
       _systemServices.Received(1).StartExplorer(path);
     }
+
+    public void ShouldNotStartExplorer()
+    {
+      _systemServices.Received(0).StartExplorer(Arg.Any<ChangedPath>());
+    }
   }
 }

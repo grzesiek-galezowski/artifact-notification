@@ -60,6 +60,7 @@
     <Compile Include="FakeContext\FakeMonitoredPath.cs" />
     <Compile Include="Specification\GivenNoPathChangeWasDetectedYet.cs" />
     <Compile Include="Specification\GivenPathWasReportedAndItStillExists.cs" />
+    <Compile Include="Specification\GivenPathWasReportedButItDoesNotExist.cs" />
     <Compile Include="TestingUtilities\ManuallyTriggerableFileSystemWatchers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Specification\WhenApplicationIsStarted.cs" />
