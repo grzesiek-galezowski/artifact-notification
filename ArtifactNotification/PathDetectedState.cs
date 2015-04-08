@@ -4,23 +4,25 @@ namespace ArtifactNotification
   {
     private readonly ChangedPath _fullPath;
     private readonly SystemServices _systemServices;
+    private readonly ApplicationEventsPresenter _applicationEventsPresenter;
 
-    public PathDetectedState(ChangedPath fullPath, SystemServices systemServices)
+    public PathDetectedState(ChangedPath fullPath, SystemServices systemServices, ApplicationEventsPresenter applicationEventsPresenter)
     {
       _fullPath = fullPath;
       _systemServices = systemServices;
+      _applicationEventsPresenter = applicationEventsPresenter;
     }
 
-    public void SaveToClipboard(PathContext context, ApplicationEventsPresenter presenter)
+    public void SaveToClipboard()
     {
       if (_systemServices.PathExists(_fullPath))
       {
         _systemServices.AddToClipboard(_fullPath);
-        presenter.UpdateLastPathCopiedToClipboard(_fullPath);
+        _applicationEventsPresenter.UpdateLastPathCopiedToClipboard(_fullPath);
       }
     }
 
-    public void OpenFolder(PathContext pathContext)
+    public void OpenFolder()
     {
       if (_systemServices.PathExists(_fullPath))
       {

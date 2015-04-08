@@ -10,16 +10,18 @@
   {
     private readonly SystemServices _systemServices;
     private readonly DiagnosticMessages _diagnosticMessages;
+    private readonly ApplicationEventsPresenter _applicationEventsPresenter;
 
-    public ConcretePathStates(SystemServices systemServices, DiagnosticMessages diagnosticMessages)
+    public ConcretePathStates(SystemServices systemServices, DiagnosticMessages diagnosticMessages, ApplicationEventsPresenter applicationEventsPresenter)
     {
       _systemServices = systemServices;
       _diagnosticMessages = diagnosticMessages;
+      _applicationEventsPresenter = applicationEventsPresenter;
     }
 
     public PathDetectedState PathDetectedState(ChangedPath fullPath)
     {
-      return new PathDetectedState(fullPath, _systemServices);
+      return new PathDetectedState(fullPath, _systemServices, _applicationEventsPresenter);
     }
 
     public PathNotDetectedState PathNotDetectedState()

@@ -21,7 +21,7 @@ namespace ArtifactNotification
     {
       try
       {
-        _pathContext.Save(new ChangedPath(e.FullPath), _presenter);
+        _pathContext.Save(new ChangedPath(e.FullPath));
       }
       catch (Exception ex)
       {
@@ -33,7 +33,7 @@ namespace ArtifactNotification
     {
       try
       {
-        _pathContext.CopyFileToClipboard(_presenter);
+        _pathContext.CopyFileToClipboard();
       }
       catch (Exception ex)
       {

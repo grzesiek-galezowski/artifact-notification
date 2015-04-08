@@ -8,30 +8,36 @@ namespace ArtifactNotification
     //bug make not public
     private readonly DiagnosticMessages _diagnosticMessages;
     private readonly FileSystemWatchers _watchers;
+    private readonly ApplicationEventsPresenter _applicationEventsPresenter;
     private PathState _currentState;
     private readonly PathStates _pathStates;
 
-    public PathContext(DiagnosticMessages diagnosticMessages, FileSystemWatchers watchers, PathStates pathStates)
+    public PathContext(
+      DiagnosticMessages diagnosticMessages, 
+      FileSystemWatchers watchers, 
+      ApplicationEventsPresenter applicationEventsPresenter, 
+      PathStates pathStates)
     {
       _diagnosticMessages = diagnosticMessages;
       _watchers = watchers;
+      _applicationEventsPresenter = applicationEventsPresenter;
       _pathStates = pathStates;
       _currentState = _pathStates.PathNotDetectedState();
     }
 
-    public void CopyFileToClipboard(ApplicationEventsPresenter presenter)
+    public void CopyFileToClipboard()
     {
-      _currentState.SaveToClipboard(this, presenter);
+      _currentState.SaveToClipboard();
     }
 
     public void OpenFolder()
     {
-      _currentState.OpenFolder(this);
+      _currentState.OpenFolder();
     }
 
-    public void Initialize(ApplicationEventsPresenter applicationEventsPresenter)
+    public void Initialize()
     {
-      applicationEventsPresenter.UpdateMonitoredPath(_watchers.Description());
+      _applicationEventsPresenter.UpdateMonitoredPath(_watchers.Description());
       _diagnosticMessages.NotifyApplicationStarted();
     }
 
@@ -40,11 +46,11 @@ namespace ArtifactNotification
       throw new System.NotImplementedException();
     }
 
-    public void Save(ChangedPath fullPath, ApplicationEventsPresenter applicationEventsPresenter)
+    public void Save(ChangedPath fullPath)
     {
       _currentState = _pathStates.PathDetectedState(fullPath);
       _diagnosticMessages.NotifyMonitoredPathChanged(fullPath);
-      applicationEventsPresenter.UpdateLastDetectedChangedPath(fullPath);
+      _applicationEventsPresenter.UpdateLastDetectedChangedPath(fullPath);
     }
   }
 

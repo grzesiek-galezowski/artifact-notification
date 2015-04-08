@@ -9,12 +9,12 @@ namespace ArtifactNotification
       _diagnosticMessages = diagnosticMessages;
     }
 
-    public void OpenFolder(PathContext pathContext)
+    public void OpenFolder()
     {
       _diagnosticMessages.WarnNothingWillHappen();
     }
 
-    public void SaveToClipboard(PathContext pathContext, ApplicationEventsPresenter presenter)
+    public void SaveToClipboard()
     {
       _diagnosticMessages.WarnNothingWillHappen();
     }

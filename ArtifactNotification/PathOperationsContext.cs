@@ -2,10 +2,9 @@
 {
   public interface PathOperationsContext
   {
-    void Save(ChangedPath fullPath, ApplicationEventsPresenter applicationEventsPresenter);
-    void CopyFileToClipboard(ApplicationEventsPresenter presenter);
+    void Save(ChangedPath fullPath);
+    void CopyFileToClipboard();
     void OpenFolder();
-    void Initialize(ApplicationEventsPresenter applicationEventsPresenter);
     void ChangeFilters(string filters);
   }
 }
