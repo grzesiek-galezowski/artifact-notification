@@ -1,7 +1,6 @@
 using System.IO;
 using ArtifactNotification;
-using ArtifactNotification.Domain;
-using ArtifactNotificationSpecification.TestingUtilities;
+using ArtifactNotificationSpecification.TestDoubles;
 using NSubstitute;
 using Ports;
 using TddEbook.TddToolkit;

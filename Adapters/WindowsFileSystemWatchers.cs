@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using Ports;
 
-namespace ArtifactNotification.Adapters
+namespace Adapters
 {
   public class WindowsFileSystemWatchers : FileSystemWatchers
   {

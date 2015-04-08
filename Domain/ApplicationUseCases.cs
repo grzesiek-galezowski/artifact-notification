@@ -3,7 +3,7 @@ using System.IO;
 using System.Windows;
 using Ports;
 
-namespace ArtifactNotification.Domain
+namespace Domain
 {
   public class ApplicationUseCases : UseCases
   {

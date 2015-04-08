@@ -1,6 +1,5 @@
 using System.Windows;
 using ArtifactNotification;
-using ArtifactNotification.Domain;
 using NSubstitute;
 using Ports;
 

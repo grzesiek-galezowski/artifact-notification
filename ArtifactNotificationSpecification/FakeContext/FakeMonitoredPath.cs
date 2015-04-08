@@ -1,5 +1,5 @@
 using ArtifactNotification;
-using ArtifactNotificationSpecification.TestingUtilities;
+using ArtifactNotificationSpecification.TestDoubles;
 using NSubstitute;
 using Ports;
 

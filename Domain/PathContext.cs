@@ -1,6 +1,6 @@
 ﻿using Ports;
 
-namespace ArtifactNotification.Domain
+namespace Domain
 {
   public class PathContext : PathOperationsContext
   {

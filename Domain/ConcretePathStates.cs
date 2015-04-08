@@ -1,13 +1,7 @@
 ﻿using Ports;
 
-namespace ArtifactNotification.Domain
+namespace Domain
 {
-  public interface PathStates
-  {
-    PathDetectedState ForDetectedChangeTo(ChangedPath fullPath);
-    PathNotDetectedState PathNotDetectedState();
-  }
-
   public class ConcretePathStates : PathStates
   {
     private readonly SystemServices _systemServices;

@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ArtifactNotification;
-using ArtifactNotification.Domain;
+﻿using Domain;
 using NSubstitute;
 using NUnit.Framework;
 using Ports;
 using TddEbook.TddToolkit;
 
-namespace ArtifactNotificationSpecification
+namespace DomainSpecification
 {
   public class ApplicationUseCasesSpecification
   {

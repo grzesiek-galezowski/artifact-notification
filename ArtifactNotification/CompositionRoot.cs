@@ -1,5 +1,5 @@
 using System;
-using ArtifactNotification.Domain;
+using Domain;
 using Ports;
 
 namespace ArtifactNotification

@@ -1,9 +1,8 @@
 ﻿using System.IO;
-using ArtifactNotification;
 using Ports;
 using TddEbook.TddToolkit;
 
-namespace ArtifactNotificationSpecification.TestingUtilities
+namespace ArtifactNotificationSpecification.TestDoubles
 {
   public class ManuallyTriggerableFileSystemWatchers : FileSystemWatchers
   {

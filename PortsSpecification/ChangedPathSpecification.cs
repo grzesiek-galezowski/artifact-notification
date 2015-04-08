@@ -1,10 +1,8 @@
-﻿using ArtifactNotification;
-using ArtifactNotification.Domain;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using Ports;
 using TddEbook.TddToolkit;
 
-namespace ArtifactNotificationSpecification
+namespace PortsSpecification
 {
   public class ChangedPathSpecification
   {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using Ports;
 
-namespace ArtifactNotification.Adapters
+namespace Adapters
 {
   public class WindowsFileSystemWatcherFactory : FileSystemWatcherFactory
   {
@@ -49,15 +49,6 @@ namespace ArtifactNotification.Adapters
     private static NotifyFilters DefaultNotifyFilters()
     {
       return NotifyFilters.LastWrite | NotifyFilters.FileName; // | NotifyFilters.DirectoryName
-    }
-  }
-
-  public class CouldNotMonitorSpecifiedPathException : Exception
-  {
-    public CouldNotMonitorSpecifiedPathException(string monitoredPath, IEnumerable<string> monitoredFilters, ArgumentException argumentException)
-      : base("Could not start monitoring path " + monitoredPath + ". Please verify that the path exists.", argumentException)
-    {
-      
     }
   }
 }

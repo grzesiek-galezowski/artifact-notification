@@ -1,5 +1,4 @@
 ﻿using ArtifactNotification;
-using ArtifactNotification.Domain;
 using ArtifactNotificationSpecification.Drivers;
 using NUnit.Framework;
 using Ports;
@@ -10,7 +9,6 @@ namespace ArtifactNotificationSpecification.Specification
   public class GivenPathWasReportedButItDoesNotExist //is this even a realistic scenario?
   {
     private static ArtifactNotificationDriver _context;
-    private static ChangedPath _changedPath;
 
     [SetUp]
     public void Setup()
@@ -22,7 +20,6 @@ namespace ArtifactNotificationSpecification.Specification
       _context.StartApplication();
       var changedPathDir = Any.String();
       var changedPathFile = Any.String();
-      _changedPath = new ChangedPath(changedPathDir, changedPathFile);
 
       _context.FileSystem.ReportChangedPath(changedPathDir, changedPathFile);
       _context.ClearRecordedEvents();

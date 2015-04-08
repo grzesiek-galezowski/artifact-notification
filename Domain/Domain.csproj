@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{40B8514D-EB87-4D09-B395-1F2053F19DC4}</ProjectGuid>
+    <ProjectGuid>{BB3616A8-142D-4DC1-91D9-067F88284BEC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ArtifactNotificationSpecification</RootNamespace>
-    <AssemblyName>ArtifactNotificationSpecification</AssemblyName>
+    <RootNamespace>Domain</RootNamespace>
+    <AssemblyName>Domain</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,47 +30,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NSubstitute">
-      <HintPath>..\packages\NSubstitute.1.8.1.0\lib\net45\NSubstitute.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework">
-      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="TddToolkit">
-      <HintPath>..\packages\Tdd-Toolkit.1.0.21\lib\net40\TddToolkit.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Drivers\ArtifactNotificationDriver.cs" />
-    <Compile Include="Specification\AppSpecification.cs" />
-    <Compile Include="FakeContext\FakeClientSideInterface.cs" />
-    <Compile Include="FakeContext\FakeClipboard.cs" />
-    <Compile Include="FakeContext\FakeDiagnosticBubble.cs" />
-    <Compile Include="FakeContext\FakeFileSystem.cs" />
-    <Compile Include="FakeContext\FakeLastDetectedPathChange.cs" />
-    <Compile Include="FakeContext\FakeMonitoredPath.cs" />
-    <Compile Include="Specification\GivenNoPathChangeWasDetectedYet.cs" />
-    <Compile Include="Specification\GivenPathWasReportedAndItStillExists.cs" />
-    <Compile Include="Specification\GivenPathWasReportedButItDoesNotExist.cs" />
-    <Compile Include="TestDoubles\ManuallyTriggerableFileSystemWatchers.cs" />
+    <Compile Include="ApplicationUseCases.cs" />
+    <Compile Include="ConcretePathStates.cs" />
+    <Compile Include="PathContext.cs" />
+    <Compile Include="PathDetectedState.cs" />
+    <Compile Include="PathNotDetectedState.cs" />
+    <Compile Include="PathOperationsContext.cs" />
+    <Compile Include="PathState.cs" />
+    <Compile Include="PathStates.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Specification\WhenApplicationIsStarted.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ArtifactNotification\ArtifactNotification.csproj">
-      <Project>{481dca39-fa90-4ea3-8881-9b42d30f058f}</Project>
-      <Name>ArtifactNotification</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Domain\Domain.csproj">
-      <Project>{bb3616a8-142d-4dc1-91d9-067f88284bec}</Project>
-      <Name>Domain</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Ports\Ports.csproj">
       <Project>{f6f5aa65-fff6-468d-8023-439ee3b4b670}</Project>
       <Name>Ports</Name>

@@ -1,5 +1,4 @@
 using ArtifactNotification;
-using ArtifactNotification.Domain;
 using NSubstitute;
 using Ports;
 

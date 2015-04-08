@@ -1,4 +1,4 @@
-namespace ArtifactNotification.Domain
+namespace Domain
 {
   public interface PathState
   {

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows;
-using ArtifactNotification.Domain;
+using Adapters;
 using Ports;
 
-namespace ArtifactNotification.Adapters
+namespace ArtifactNotification
 {
   /// <summary>
   /// Interaction logic for MainWindow.xaml

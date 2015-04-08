@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Threading;
-using ArtifactNotification.Domain;
 using Hardcodet.Wpf.TaskbarNotification;
 using Ports;
 
-namespace ArtifactNotification.Adapters
+namespace ArtifactNotification
 {
   public class WindowsDiagnosticMessages : DiagnosticMessages
   {
