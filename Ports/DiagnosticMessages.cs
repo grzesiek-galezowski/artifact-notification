@@ -1,7 +1,6 @@
 using System;
-using ArtifactNotification.Domain;
 
-namespace ArtifactNotification.Ports
+namespace Ports
 {
   public interface DiagnosticMessages
   {

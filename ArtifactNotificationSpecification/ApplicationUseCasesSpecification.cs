@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using ArtifactNotification;
 using ArtifactNotification.Domain;
-using ArtifactNotification.Ports;
 using NSubstitute;
 using NUnit.Framework;
+using Ports;
 using TddEbook.TddToolkit;
 
 namespace ArtifactNotificationSpecification

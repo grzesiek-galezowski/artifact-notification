@@ -1,6 +1,4 @@
-﻿using ArtifactNotification.Domain;
-
-namespace ArtifactNotification.Ports
+﻿namespace Ports
 {
   public interface SystemServices
   {

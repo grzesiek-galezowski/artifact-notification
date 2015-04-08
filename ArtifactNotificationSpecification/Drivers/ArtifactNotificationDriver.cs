@@ -1,8 +1,8 @@
 using ArtifactNotification;
-using ArtifactNotification.Ports;
 using ArtifactNotificationSpecification.FakeContext;
 using ArtifactNotificationSpecification.TestingUtilities;
 using NSubstitute;
+using Ports;
 
 namespace ArtifactNotificationSpecification.Drivers
 {

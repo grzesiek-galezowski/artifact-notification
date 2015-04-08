@@ -2,8 +2,8 @@
 using System.Windows;
 using System.Windows.Threading;
 using ArtifactNotification.Domain;
-using ArtifactNotification.Ports;
 using Hardcodet.Wpf.TaskbarNotification;
+using Ports;
 
 namespace ArtifactNotification.Adapters
 {

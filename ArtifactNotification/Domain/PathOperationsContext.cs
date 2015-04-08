@@ -1,4 +1,6 @@
-﻿namespace ArtifactNotification.Domain
+﻿using Ports;
+
+namespace ArtifactNotification.Domain
 {
   public interface PathOperationsContext
   {

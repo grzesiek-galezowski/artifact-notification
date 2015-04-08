@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using ArtifactNotification.Ports;
+using Ports;
 
 namespace ArtifactNotification.Adapters
 {

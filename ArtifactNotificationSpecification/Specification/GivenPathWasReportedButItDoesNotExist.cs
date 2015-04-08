@@ -2,6 +2,7 @@
 using ArtifactNotification.Domain;
 using ArtifactNotificationSpecification.Drivers;
 using NUnit.Framework;
+using Ports;
 using TddEbook.TddToolkit;
 
 namespace ArtifactNotificationSpecification.Specification

@@ -1,8 +1,8 @@
 using System.Windows;
 using ArtifactNotification;
 using ArtifactNotification.Domain;
-using ArtifactNotification.Ports;
 using NSubstitute;
+using Ports;
 
 namespace ArtifactNotificationSpecification.FakeContext
 {

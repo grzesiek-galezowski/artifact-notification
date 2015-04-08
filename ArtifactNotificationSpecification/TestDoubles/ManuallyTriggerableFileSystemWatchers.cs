@@ -1,6 +1,6 @@
 ﻿using System.IO;
 using ArtifactNotification;
-using ArtifactNotification.Ports;
+using Ports;
 using TddEbook.TddToolkit;
 
 namespace ArtifactNotificationSpecification.TestingUtilities

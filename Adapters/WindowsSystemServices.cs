@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Windows;
 using ArtifactNotification.Domain;
-using ArtifactNotification.Ports;
+using Ports;
 
 namespace ArtifactNotification.Adapters
 {

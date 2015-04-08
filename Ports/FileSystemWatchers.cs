@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ArtifactNotification.Ports
+namespace Ports
 {
   public interface FileSystemWatchers : IDisposable
   {
