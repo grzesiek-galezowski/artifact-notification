@@ -13,7 +13,11 @@ namespace DomainSpecification
     {
       //GIVEN
       var pathContext = Substitute.For<PathOperationsContext>();
-      var useCases = new ApplicationUseCases(Any.Instance<DiagnosticMessages>(), pathContext, Any.Instance<ApplicationEventsPresenter>());
+      var useCases = new ApplicationUseCases(
+        Any.Instance<DiagnosticMessages>(), 
+        pathContext, 
+        Any.Instance<ApplicationEventsPresenter>());
+
       var filters = Any.String();
       
       //WHEN
