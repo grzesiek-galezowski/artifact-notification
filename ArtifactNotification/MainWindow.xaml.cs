@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using Adapters;
+using Domain;
 using Ports;
 
 namespace ArtifactNotification
@@ -24,7 +25,8 @@ namespace ArtifactNotification
             TrayIcon, 
             Dispatcher), 
           new WindowsFileSystemWatcherFactory(), 
-          new WindowsSystemServices());
+          new WindowsSystemServices(),
+          FilteringObserver.DoNotFilter /* bug read from config */);
       }
       catch (Exception e)
       {

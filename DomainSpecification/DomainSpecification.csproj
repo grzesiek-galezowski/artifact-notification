@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationUseCasesSpecification.cs" />
+    <Compile Include="FilteringObserverSpecification.cs" />
     <Compile Include="PathContextSpecification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

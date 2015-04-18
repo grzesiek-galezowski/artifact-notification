@@ -8,10 +8,7 @@ namespace ArtifactNotification
   {
     private FileSystemWatchers _watchers;
 
-    public UseCases Compose(
-      ApplicationEventsPresenter applicationEventsPresenter, 
-      DiagnosticMessages windowsDiagnosticMessages, 
-      FileSystemWatcherFactory fileSystemWatcherFactory, SystemServices systemServices)
+    public UseCases Compose(ApplicationEventsPresenter applicationEventsPresenter, DiagnosticMessages windowsDiagnosticMessages, FileSystemWatcherFactory fileSystemWatcherFactory, SystemServices systemServices, string filters)
     {
       _watchers = fileSystemWatcherFactory.CreateFileSystemWatchers();
       var pathContext = new PathContext(
@@ -19,7 +16,7 @@ namespace ArtifactNotification
         new ConcretePathStates(systemServices, windowsDiagnosticMessages, applicationEventsPresenter));
 
       var applicationUseCases = new SynchronizedUseCases(new ApplicationUseCases(windowsDiagnosticMessages, pathContext, applicationEventsPresenter));
-      _watchers.ReportChangesTo(applicationUseCases);
+      _watchers.ReportChangesTo(new FilteringObserver(applicationUseCases, filters));
       pathContext.Initialize();
 
       return applicationUseCases;

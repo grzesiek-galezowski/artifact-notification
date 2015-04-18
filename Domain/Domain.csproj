@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Minimatch, Version=1.1.0.0, Culture=neutral, PublicKeyToken=0cadeb0b849c27c0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Minimatch.1.1.0\lib\portable-net40+sl50+win+wp80\Minimatch.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -37,6 +41,7 @@
   <ItemGroup>
     <Compile Include="ApplicationUseCases.cs" />
     <Compile Include="ConcretePathStates.cs" />
+    <Compile Include="FilteringObserver.cs" />
     <Compile Include="PathContext.cs" />
     <Compile Include="PathDetectedState.cs" />
     <Compile Include="PathNotDetectedState.cs" />
@@ -50,6 +55,9 @@
       <Project>{f6f5aa65-fff6-468d-8023-439ee3b4b670}</Project>
       <Name>Ports</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

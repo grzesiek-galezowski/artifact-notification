@@ -1,6 +1,7 @@
 using ArtifactNotification;
 using ArtifactNotificationSpecification.FakeContext;
 using ArtifactNotificationSpecification.TestDoubles;
+using Domain;
 using NSubstitute;
 using Ports;
 
@@ -13,6 +14,7 @@ namespace ArtifactNotificationSpecification.Drivers
     private DiagnosticMessages _diagnosticMessages;
     private ManuallyTriggerableFileSystemWatchers _handControlledFileSystemWatchers;
     private SystemServices _systemServices;
+    private string _filters = FilteringObserver.DoNotFilter;
 
     public FakeFileSystem FileSystem
     {
@@ -56,7 +58,7 @@ namespace ArtifactNotificationSpecification.Drivers
       _handControlledFileSystemWatchers = new ManuallyTriggerableFileSystemWatchers();
       watchersFactory.CreateFileSystemWatchers().Returns(_handControlledFileSystemWatchers);
 
-      _useCases = compositionRoot.Compose(_presenter, _diagnosticMessages, watchersFactory, _systemServices);
+      _useCases = compositionRoot.Compose(_presenter, _diagnosticMessages, watchersFactory, _systemServices, _filters);
       return this;
     }
 
@@ -69,7 +71,7 @@ namespace ArtifactNotificationSpecification.Drivers
 
     public ArtifactNotificationDriver ConfigureFilters(string filters)
     {
-      _useCases.ChangeFilters(filters);
+      _filters = filters;
       return this;
     }
   }

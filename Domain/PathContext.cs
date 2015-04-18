@@ -39,11 +39,6 @@ namespace Domain
       _diagnosticMessages.NotifyApplicationStarted();
     }
 
-    public void ChangeFilters(string filters)
-    {
-      throw new System.NotImplementedException();
-    }
-
     public void Save(ChangedPath fullPath)
     {
       _currentState = _pathStates.ForDetectedChangeTo(fullPath);

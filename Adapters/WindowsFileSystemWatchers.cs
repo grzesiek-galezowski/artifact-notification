@@ -36,13 +36,13 @@ namespace Adapters
       return _monitoredFilters.Aggregate((f, current) => string.Format("{0}|{1}", f, current));
     }
 
-    public void ReportChangesTo(UseCases observer)
+    public void ReportChangesTo(PathChangesObserver observer)
     {
       foreach (var fileSystemWatcher in _watchers)
       {
-        fileSystemWatcher.Changed += observer.OnChanged;
-        fileSystemWatcher.Created += observer.OnChanged;
-        fileSystemWatcher.Renamed += observer.OnChanged;
+        fileSystemWatcher.Changed += (source, e) => { observer.OnChanged(new ChangedPath(e.FullPath)); };
+        fileSystemWatcher.Created += (source, e) => { observer.OnChanged(new ChangedPath(e.FullPath)); };
+        fileSystemWatcher.Renamed += (source, e) => { observer.OnChanged(new ChangedPath(e.FullPath)); };
         fileSystemWatcher.EnableRaisingEvents = true;
       }
     }

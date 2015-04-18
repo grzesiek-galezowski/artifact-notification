@@ -6,7 +6,7 @@ namespace ArtifactNotificationSpecification.TestDoubles
 {
   public class ManuallyTriggerableFileSystemWatchers : FileSystemWatchers
   {
-    private UseCases _observer;
+    private PathChangesObserver _observer;
     private readonly string _description;
 
     public ManuallyTriggerableFileSystemWatchers()
@@ -16,7 +16,7 @@ namespace ArtifactNotificationSpecification.TestDoubles
 
     public void OnChanged(FileSystemEventArgs eventArgs)
     {
-      _observer.OnChanged(this, eventArgs);
+      _observer.OnChanged(new ChangedPath(eventArgs.FullPath));
     }
 
     public void Dispose()
@@ -29,7 +29,7 @@ namespace ArtifactNotificationSpecification.TestDoubles
       return _description;
     }
 
-    public void ReportChangesTo(UseCases observer)
+    public void ReportChangesTo(PathChangesObserver observer)
     {
       _observer = observer;
     }

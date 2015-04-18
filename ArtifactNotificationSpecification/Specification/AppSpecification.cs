@@ -31,7 +31,7 @@ namespace ArtifactNotificationSpecification.Specification
       {
         //GIVEN
         var context = new ArtifactNotificationDriver();
-        context.StartApplication().ConfigureFilters("*.txt").ClearRecordedEvents();
+        context.ConfigureFilters("*.txt").StartApplication().ClearRecordedEvents();
         var anyDir = Any.String();
         var nonTextFileName = Any.StringNotContaining(".txt");
         

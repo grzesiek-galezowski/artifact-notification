@@ -14,11 +14,11 @@ namespace Ports
       _innerObserver = innerObserver;
     }
 
-    public void OnChanged(object source, FileSystemEventArgs e)
+    public void OnChanged(ChangedPath path)
     {
       lock (_syncRoot)
       {
-        _innerObserver.OnChanged(source, e);
+        _innerObserver.OnChanged(path);
       }
     }
 
@@ -35,14 +35,6 @@ namespace Ports
       lock (_syncRoot)
       {
         _innerObserver.CopyFileToClipboard(sender, e);
-      }
-    }
-
-    public void ChangeFilters(string filters)
-    {
-      lock (_syncRoot)
-      {
-        _innerObserver.ChangeFilters(filters);
       }
     }
   }

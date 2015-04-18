@@ -18,11 +18,11 @@ namespace Domain
       _presenter = presenter;
     }
 
-    public void OnChanged(object source, FileSystemEventArgs e)
+    public void OnChanged(ChangedPath changedPath)
     {
       try
       {
-        _pathContext.Save(new ChangedPath(e.FullPath));
+        _pathContext.Save(changedPath);
       }
       catch (Exception ex)
       {
@@ -39,18 +39,6 @@ namespace Domain
       catch (Exception ex)
       {
         _diagnosticMessages.NotifyOnError(ex);
-      }
-    }
-
-    public void ChangeFilters(string filters)
-    {
-      try
-      {
-        _pathContext.ChangeFilters(filters);
-      }
-      catch (Exception e)
-      {
-        _diagnosticMessages.NotifyOnError(e);
       }
     }
 
