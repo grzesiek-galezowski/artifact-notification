@@ -3,8 +3,6 @@ using Domain;
 using Ports;
 using Ports.Interfaces;
 
-//bug clipboard does not work
-
 namespace ArtifactNotification
 {
   public class CompositionRoot : IDisposable
@@ -26,20 +24,42 @@ namespace ArtifactNotification
 
     public UseCases Compose(
       ApplicationEventsPresenter applicationEventsPresenter, 
-      DiagnosticMessages windowsDiagnosticMessages)
+      DiagnosticMessages diagnosticMessages)
     {
-      _watchers = _fileSystemWatcherFactory.CreateFileSystemWatchers(_filters);
-      var pathContext = new PathContext(
-        windowsDiagnosticMessages, _watchers, applicationEventsPresenter,
-        new ConcretePathStates(_systemServices, windowsDiagnosticMessages, applicationEventsPresenter));
+      _watchers = FileSystemWatchers();
 
-      var applicationUseCases = new SynchronizedUseCases(
-        new ApplicationUseCases(windowsDiagnosticMessages, pathContext, applicationEventsPresenter));
-      _watchers.ReportChangesTo(FilteredUsing(_filters, applicationUseCases));
+      var applicationUseCases = Synchronized(
+        ApplicationUseCases(diagnosticMessages, 
+          PathOperationsContext(
+            applicationEventsPresenter, 
+            diagnosticMessages)));
+
+      _watchers.ReportChangesTo(FilteredWith(_filters, applicationUseCases));
       return applicationUseCases;
     }
 
-    private PathChangesObserver FilteredUsing(string filters, SynchronizedUseCases applicationUseCases)
+    private PathContext PathOperationsContext(ApplicationEventsPresenter applicationEventsPresenter, DiagnosticMessages diagnosticMessages)
+    {
+      return new PathContext(diagnosticMessages, _watchers, applicationEventsPresenter,
+        new ConcretePathStates(_systemServices, diagnosticMessages, applicationEventsPresenter));
+    }
+
+    private FileSystemWatchers FileSystemWatchers()
+    {
+      return _fileSystemWatcherFactory.CreateFileSystemWatchers(_filters);
+    }
+
+    private static ApplicationUseCases ApplicationUseCases(DiagnosticMessages windowsDiagnosticMessages, PathContext pathContext)
+    {
+      return new ApplicationUseCases(windowsDiagnosticMessages, pathContext);
+    }
+
+    private static SynchronizedUseCases Synchronized(ApplicationUseCases applicationUseCases)
+    {
+      return new SynchronizedUseCases(applicationUseCases);
+    }
+
+    private PathChangesObserver FilteredWith(string filters, SynchronizedUseCases applicationUseCases)
     {
       return new FilteringObserver(applicationUseCases, filters);
     }
