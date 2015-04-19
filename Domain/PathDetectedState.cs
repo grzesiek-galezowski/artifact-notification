@@ -1,4 +1,5 @@
 using Ports;
+using Ports.Interfaces;
 
 namespace Domain
 {

@@ -1,5 +1,6 @@
 using System.IO;
 using System.Windows;
+using Ports.Interfaces;
 
 namespace Ports
 {
@@ -7,7 +8,7 @@ namespace Ports
   {
     private readonly UseCases _innerObserver;
 
-    private readonly object _syncRoot = new object();
+    public readonly object _syncRoot = new object();
 
     public SynchronizedUseCases(UseCases innerObserver)
     {

@@ -1,7 +1,6 @@
-﻿using System.IO;
-using System.Windows;
+﻿using System.Windows;
 
-namespace Ports
+namespace Ports.Interfaces
 {
   public interface UseCases : PathChangesObserver
   {

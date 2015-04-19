@@ -4,6 +4,7 @@ using ArtifactNotificationSpecification.TestDoubles;
 using Domain;
 using NSubstitute;
 using Ports;
+using Ports.Interfaces;
 
 namespace ArtifactNotificationSpecification.Drivers
 {

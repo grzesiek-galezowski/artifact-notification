@@ -2,6 +2,7 @@
 using System.Windows;
 using Hardcodet.Wpf.TaskbarNotification;
 using Ports;
+using Ports.Interfaces;
 
 namespace ArtifactNotification
 {

@@ -37,6 +37,7 @@
       <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="TddToolkit, Version=1.0.5493.1038, Culture=neutral, PublicKeyToken=7b96bed4fdcd799b, processorArchitecture=MSIL">
@@ -48,6 +49,7 @@
     <Compile Include="ChangedPathSpecification.cs" />
     <Compile Include="LazyMainWindowSpecification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SynchronizedUseCasesSpecification.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

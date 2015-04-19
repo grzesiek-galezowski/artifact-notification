@@ -2,6 +2,7 @@ using ArtifactNotification;
 using ArtifactNotificationSpecification.TestDoubles;
 using NSubstitute;
 using Ports;
+using Ports.Interfaces;
 
 namespace ArtifactNotificationSpecification.FakeContext
 {

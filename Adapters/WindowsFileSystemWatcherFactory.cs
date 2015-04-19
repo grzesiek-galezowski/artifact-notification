@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using Ports;
+using Ports.Interfaces;
 
 namespace Adapters
 {

@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using Ports;
+using Ports.Interfaces;
 using TddEbook.TddToolkit;
 
 namespace ArtifactNotificationSpecification.TestDoubles

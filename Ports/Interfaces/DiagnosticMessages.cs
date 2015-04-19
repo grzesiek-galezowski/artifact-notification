@@ -1,6 +1,6 @@
 using System;
 
-namespace Ports
+namespace Ports.Interfaces
 {
   public interface DiagnosticMessages
   {

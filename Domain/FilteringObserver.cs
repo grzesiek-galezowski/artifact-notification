@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Minimatch;
 using Ports;
+using Ports.Interfaces;
 
 namespace Domain
 {

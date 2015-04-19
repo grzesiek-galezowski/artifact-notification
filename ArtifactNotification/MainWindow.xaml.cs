@@ -4,6 +4,7 @@ using Adapters;
 using Domain;
 using Hardcodet.Wpf.TaskbarNotification;
 using Ports;
+using Ports.Interfaces;
 
 namespace ArtifactNotification
 {

@@ -2,6 +2,7 @@
 using NSubstitute;
 using NUnit.Framework;
 using Ports;
+using Ports.Interfaces;
 using TddEbook.TddToolkit;
 
 namespace DomainSpecification

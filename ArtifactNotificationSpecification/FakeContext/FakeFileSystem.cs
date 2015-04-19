@@ -3,6 +3,7 @@ using ArtifactNotification;
 using ArtifactNotificationSpecification.TestDoubles;
 using NSubstitute;
 using Ports;
+using Ports.Interfaces;
 using TddEbook.TddToolkit;
 
 namespace ArtifactNotificationSpecification.FakeContext

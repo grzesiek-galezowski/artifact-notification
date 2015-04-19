@@ -1,6 +1,7 @@
 using ArtifactNotification;
 using NSubstitute;
 using Ports;
+using Ports.Interfaces;
 
 namespace ArtifactNotificationSpecification.FakeContext
 {
