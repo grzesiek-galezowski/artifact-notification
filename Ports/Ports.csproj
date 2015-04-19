@@ -35,17 +35,22 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationEventsPresenter.cs" />
+    <Compile Include="Interfaces\ApplicationEventsPresenter.cs" />
     <Compile Include="ChangedPath.cs" />
-    <Compile Include="DiagnosticMessages.cs" />
-    <Compile Include="FileSystemWatcherFactory.cs" />
-    <Compile Include="FileSystemWatchers.cs" />
+    <Compile Include="Interfaces\DiagnosticMessages.cs" />
+    <Compile Include="Interfaces\FileSystemWatcherFactory.cs" />
+    <Compile Include="Interfaces\FileSystemWatchers.cs" />
+    <Compile Include="Interfaces\GuiMainWindow.cs" />
     <Compile Include="LazyMainWindow.cs" />
+    <Compile Include="Interfaces\MessageBoxPresenter.cs" />
+    <Compile Include="Interfaces\PathChangesObserver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SynchronizedUseCases.cs" />
-    <Compile Include="SystemServices.cs" />
-    <Compile Include="UseCases.cs" />
+    <Compile Include="Interfaces\SystemServices.cs" />
+    <Compile Include="Interfaces\TrayPresenter.cs" />
+    <Compile Include="Interfaces\UseCases.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
