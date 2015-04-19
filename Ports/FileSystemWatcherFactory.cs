@@ -2,6 +2,6 @@
 {
   public interface FileSystemWatcherFactory
   {
-    FileSystemWatchers CreateFileSystemWatchers();
+    FileSystemWatchers CreateFileSystemWatchers(string filters);
   }
 }

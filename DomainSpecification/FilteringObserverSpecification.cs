@@ -25,8 +25,7 @@ namespace DomainSpecification
 
       //THEN
       innerObserver.Received(expectedInnerObserverCallCount).OnChanged(changedPath);
-    } 
+    }
 
-    //bug change signature so that event args are not needed
   }
 }

@@ -7,44 +7,44 @@ namespace Adapters
 {
   public class WindowsFileSystemWatchers : FileSystemWatchers
   {
-    private readonly List<FileSystemWatcher> _watchers;
+    private readonly FileSystemWatcher _watcher;
     private readonly string _monitoredPath;
-    private readonly IEnumerable<string> _monitoredFilters;
+    private readonly string _monitoredFilters;
 
-    public WindowsFileSystemWatchers(List<FileSystemWatcher> watchers, string monitoredPath, IEnumerable<string> monitoredFilters)
+    public WindowsFileSystemWatchers(FileSystemWatcher watcher, string monitoredPath, string monitoredFilters)
     {
-      _watchers = watchers;
+      _watcher = watcher;
       _monitoredPath = monitoredPath;
       _monitoredFilters = monitoredFilters;
     }
 
+
     public void Dispose()
     {
-      foreach (var fileSystemWatcher in _watchers)
-      {
-        fileSystemWatcher.Dispose();
-      }
+      _watcher.Dispose();
     }
 
     public string Description()
     {
-      return string.Format("{0} in {1} ({2} watchers)", AllFiltersString(), _monitoredPath, _watchers.Count);
-    }
-
-    private string AllFiltersString()
-    {
-      return _monitoredFilters.Aggregate((f, current) => string.Format("{0}|{1}", f, current));
+      return string.Format("{0} in {1}", _monitoredFilters, _monitoredPath);
     }
 
     public void ReportChangesTo(PathChangesObserver observer)
     {
-      foreach (var fileSystemWatcher in _watchers)
-      {
-        fileSystemWatcher.Changed += (source, e) => { observer.OnChanged(new ChangedPath(e.FullPath)); };
-        fileSystemWatcher.Created += (source, e) => { observer.OnChanged(new ChangedPath(e.FullPath)); };
-        fileSystemWatcher.Renamed += (source, e) => { observer.OnChanged(new ChangedPath(e.FullPath)); };
-        fileSystemWatcher.EnableRaisingEvents = true;
-      }
+      _watcher.Changed += WatcherOnChanged(observer);
+      _watcher.Created += WatcherOnChanged(observer);
+      _watcher.Renamed += WatcherOnRenamed(observer);
+      _watcher.EnableRaisingEvents = true;
+    }
+
+    private static RenamedEventHandler WatcherOnRenamed(PathChangesObserver observer)
+    {
+      return (source, e) => { observer.OnChanged(new ChangedPath(e.FullPath)); };
+    }
+
+    private static FileSystemEventHandler WatcherOnChanged(PathChangesObserver observer)
+    {
+      return (source, e) => { observer.OnChanged(new ChangedPath(e.FullPath)); };
     }
   }
 }

@@ -1,44 +1,44 @@
 ﻿using System;
 using System.Windows;
-using System.Windows.Threading;
 using Hardcodet.Wpf.TaskbarNotification;
 using Ports;
 
 namespace ArtifactNotification
 {
+  //TODO consider including this into compontent specification
   public class WindowsDiagnosticMessages : DiagnosticMessages
   {
-    private readonly TaskbarIcon _taskbarIcon;
-    private readonly Dispatcher _dispatcher;
+    private readonly TrayPresenter _taskbarIcon;
+    private readonly MessageBoxPresenter _messagePresenter;
 
-    public WindowsDiagnosticMessages(TaskbarIcon taskbarIcon, Dispatcher dispatcher)
+    public WindowsDiagnosticMessages(TrayPresenter taskbarIcon, MessageBoxPresenter messagePresenter)
     {
       _taskbarIcon = taskbarIcon;
-      _dispatcher = dispatcher;
+      _messagePresenter = messagePresenter;
     }
 
     public void WarnNothingWillHappen()
     {
-      MessageBox.Show(NoChangesDetectedYet, "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
-      MessageBox.Show(NoChangesDetectedYet, "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+      _messagePresenter.ShowWarning(NoChangesDetectedYet);
     }
+
 
     public void NotifyOnError(Exception ex)
     {
-      MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-      MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+      _messagePresenter.ShowError(ex);
     }
 
     private const string NoChangesDetectedYet = "No changes detected yet.";
 
     public void NotifyApplicationStarted()
     {
-      _taskbarIcon.ShowBalloonTip("Artifact Notification", "Monitoring Started", BalloonIcon.Info);
+      _taskbarIcon.ShowBalloonTipInfo("Artifact Notification", "Monitoring Started");
     }
 
     public void NotifyMonitoredPathChanged(ChangedPath fullPath)
     {
-      _dispatcher.Invoke(() => _taskbarIcon.ShowBalloonTip("Changed", fullPath.ToString(), BalloonIcon.Info));
+      _taskbarIcon.ShowBalloonTipInfo("Changed", fullPath.ToString());
     }
   }
+
 }

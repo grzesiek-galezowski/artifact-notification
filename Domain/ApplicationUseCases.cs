@@ -42,6 +42,11 @@ namespace Domain
       }
     }
 
+    public void Initialize()
+    {
+      _pathContext.Initialize();
+    }
+
     public void OpenFolder(object sender, RoutedEventArgs e)
     {
       try

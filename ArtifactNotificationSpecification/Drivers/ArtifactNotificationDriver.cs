@@ -48,17 +48,19 @@ namespace ArtifactNotificationSpecification.Drivers
 
     public ArtifactNotificationDriver StartApplication()
     {
-      var compositionRoot = new CompositionRoot();
+      var watchersFactory = Substitute.For<FileSystemWatcherFactory>();
 
       _presenter = Substitute.For<ApplicationEventsPresenter>();
       _diagnosticMessages = Substitute.For<DiagnosticMessages>();
-      var watchersFactory = Substitute.For<FileSystemWatcherFactory>();
       _systemServices = Substitute.For<SystemServices>();
-
       _handControlledFileSystemWatchers = new ManuallyTriggerableFileSystemWatchers();
-      watchersFactory.CreateFileSystemWatchers().Returns(_handControlledFileSystemWatchers);
 
-      _useCases = compositionRoot.Compose(_presenter, _diagnosticMessages, watchersFactory, _systemServices, _filters);
+      watchersFactory.CreateFileSystemWatchers(_filters).Returns(_handControlledFileSystemWatchers);
+
+      var compositionRoot = new CompositionRoot(watchersFactory, _systemServices, _filters);
+
+      _useCases = compositionRoot.Compose(_presenter, _diagnosticMessages);
+      _useCases.Initialize();
       return this;
     }
 

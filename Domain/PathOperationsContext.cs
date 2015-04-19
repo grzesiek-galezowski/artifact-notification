@@ -7,5 +7,6 @@ namespace Domain
     void Save(ChangedPath fullPath);
     void CopyFileToClipboard();
     void OpenFolder();
+    void Initialize();
   }
 }

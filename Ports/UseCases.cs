@@ -12,5 +12,6 @@ namespace Ports
   {
     void OpenFolder(object sender, RoutedEventArgs e);
     void CopyFileToClipboard(object sender, RoutedEventArgs e);
+    void Initialize();
   }
 }

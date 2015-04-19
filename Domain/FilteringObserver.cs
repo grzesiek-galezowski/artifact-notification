@@ -9,7 +9,7 @@ namespace Domain
   public class FilteringObserver : PathChangesObserver
   {
     private readonly PathChangesObserver _applicationUseCases;
-    private List<Minimatcher> _globs;
+    private readonly List<Minimatcher> _globs;
 
     public FilteringObserver(PathChangesObserver applicationUseCases, string filtersAsPipeSeparatedString)
     {

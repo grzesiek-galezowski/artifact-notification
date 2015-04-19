@@ -8,7 +8,7 @@ namespace Adapters
   {
     private bool _fileExists;
 
-    public void AddToClipboard(ChangedPath fullPath) //bug refactor to value object
+    public void AddToClipboard(ChangedPath fullPath)
     {
       var objData = new DataObject();
       objData.SetData(DataFormats.FileDrop, new[] {fullPath}, false);

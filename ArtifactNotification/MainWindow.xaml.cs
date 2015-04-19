@@ -2,6 +2,7 @@
 using System.Windows;
 using Adapters;
 using Domain;
+using Hardcodet.Wpf.TaskbarNotification;
 using Ports;
 
 namespace ArtifactNotification
@@ -9,30 +10,14 @@ namespace ArtifactNotification
   /// <summary>
   /// Interaction logic for MainWindow.xaml
   /// </summary>
-  public partial class MainWindow : Window, ApplicationEventsPresenter
+  public partial class MainWindow : Window, GuiMainWindow
   {
     private readonly UseCases _useCases;
-    private readonly CompositionRoot _compositionRoot;
 
-    public MainWindow()
+    public MainWindow(UseCases useCases)
     {
-      try
-      {
-        InitializeComponent();
-        _compositionRoot = new CompositionRoot();
-        _useCases = _compositionRoot.Compose(
-          this, new WindowsDiagnosticMessages(
-            TrayIcon, 
-            Dispatcher), 
-          new WindowsFileSystemWatcherFactory(), 
-          new WindowsSystemServices(),
-          FilteringObserver.DoNotFilter /* bug read from config */);
-      }
-      catch (Exception e)
-      {
-        MessageBox.Show(e.Message + " The application will exit now.");
-        Application.Current.Shutdown(-1);
-      }
+      InitializeComponent();
+      _useCases = useCases;
     }
 
     public void UpdateMonitoredPath(string description)
@@ -40,9 +25,16 @@ namespace ArtifactNotification
       MonitoredPathLabel.Content = description;
     }
 
+    public void ShowBalloonTipInfo(string title, string message)
+    {
+      Dispatcher.Invoke(() =>
+      {
+        TrayIcon.ShowBalloonTip(title, message, BalloonIcon.Info);
+      });
+    }
+
     private void ExitApplication(object sender, RoutedEventArgs e)
     {
-      _compositionRoot.Dispose();
       TrayIcon.Dispose();
       Application.Current.Shutdown(0);
     }
@@ -68,6 +60,18 @@ namespace ArtifactNotification
     public void UpdateLastPathCopiedToClipboard(ChangedPath fullPath)
     {
       FileInClipboard.Content = fullPath;
+    }
+
+    public void ShowWarning(string message)
+    {
+      MessageBox.Show(message, "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+      MessageBox.Show(message, "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+    }
+
+    public void ShowError(Exception exception)
+    {
+      MessageBox.Show(exception.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+      MessageBox.Show(exception.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
     }
   }
 }

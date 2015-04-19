@@ -37,5 +37,13 @@ namespace Ports
         _innerObserver.CopyFileToClipboard(sender, e);
       }
     }
+
+    public void Initialize()
+    {
+      lock (_syncRoot)
+      {
+        _innerObserver.Initialize();
+      }
+    }
   }
 }
