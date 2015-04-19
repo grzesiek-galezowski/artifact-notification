@@ -42,12 +42,12 @@ namespace ArtifactNotification
 
     private void CopyFileToClipboard(object sender, RoutedEventArgs e)
     {
-      _useCases.CopyFileToClipboard(sender, e);
+      _useCases.CopyFileToClipboard();
     }
 
     private void OpenFolder(object sender, RoutedEventArgs e)
     {
-      _useCases.OpenFolder(sender, e);
+      _useCases.OpenFolder();
     }
 
     public void UpdateLastDetectedChangedPath(ChangedPath fullPath)

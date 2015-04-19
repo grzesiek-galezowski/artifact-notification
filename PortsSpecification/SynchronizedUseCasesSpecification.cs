@@ -24,9 +24,9 @@ namespace PortsSpecification
       var events = Any.Instance<RoutedEventArgs>();
       var path = Any.Instance<ChangedPath>();
 
-      proxy.AssertSynchronizes(useCases, cases => cases.CopyFileToClipboard(sender, events), Blocking.MonitorOn(proxy._syncRoot));
+      proxy.AssertSynchronizes(useCases, cases => cases.CopyFileToClipboard(), Blocking.MonitorOn(proxy._syncRoot));
       proxy.AssertSynchronizes(useCases, cases => cases.Initialize(), Blocking.MonitorOn(proxy._syncRoot));
-      proxy.AssertSynchronizes(useCases, cases => cases.OpenFolder(sender, events), Blocking.MonitorOn(proxy._syncRoot));
+      proxy.AssertSynchronizes(useCases, cases => cases.OpenFolder(), Blocking.MonitorOn(proxy._syncRoot));
       proxy.AssertSynchronizes(useCases, cases => cases.OnChanged(path), Blocking.MonitorOn(proxy._syncRoot));
     }
   }

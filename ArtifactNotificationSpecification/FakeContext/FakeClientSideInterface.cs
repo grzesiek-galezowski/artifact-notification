@@ -1,4 +1,3 @@
-using System.Windows;
 using ArtifactNotification;
 using NSubstitute;
 using Ports;
@@ -21,7 +20,7 @@ namespace ArtifactNotificationSpecification.FakeContext
 
     public void OpenFolder()
     {
-      _useCases.OpenFolder(this, new RoutedEventArgs());
+      _useCases.OpenFolder();
     }
 
     public void ShouldNotifyThatNoActionWillTakePlace()
@@ -31,7 +30,7 @@ namespace ArtifactNotificationSpecification.FakeContext
 
     public void CopyToClipboard()
     {
-      _useCases.CopyFileToClipboard(this, new RoutedEventArgs());
+      _useCases.CopyFileToClipboard();
     }
 
     public void ShouldOpenPathView(ChangedPath path)

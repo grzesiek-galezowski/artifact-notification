@@ -1,5 +1,4 @@
 using System.IO;
-using System.Windows;
 using Ports.Interfaces;
 
 namespace Ports
@@ -23,19 +22,19 @@ namespace Ports
       }
     }
 
-    public void OpenFolder(object sender, RoutedEventArgs e)
+    public void OpenFolder()
     {
       lock (_syncRoot)
       {
-        _innerObserver.OpenFolder(sender, e);
+        _innerObserver.OpenFolder();
       }
     }
 
-    public void CopyFileToClipboard(object sender, RoutedEventArgs e)
+    public void CopyFileToClipboard()
     {
       lock (_syncRoot)
       {
-        _innerObserver.CopyFileToClipboard(sender, e);
+        _innerObserver.CopyFileToClipboard();
       }
     }
 

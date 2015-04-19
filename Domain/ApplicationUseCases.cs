@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Windows;
 using Ports;
 using Ports.Interfaces;
 
@@ -10,13 +9,11 @@ namespace Domain
   {
     private readonly DiagnosticMessages _diagnosticMessages;
     private readonly PathOperationsContext _pathContext;
-    private readonly ApplicationEventsPresenter _presenter;
 
-    public ApplicationUseCases(DiagnosticMessages diagnosticMessages, PathOperationsContext pathContext, ApplicationEventsPresenter presenter)
+    public ApplicationUseCases(DiagnosticMessages diagnosticMessages, PathOperationsContext pathContext)
     {
       _diagnosticMessages = diagnosticMessages;
       _pathContext = pathContext;
-      _presenter = presenter;
     }
 
     public void OnChanged(ChangedPath changedPath)
@@ -31,7 +28,7 @@ namespace Domain
       }
     }
 
-    public void CopyFileToClipboard(object sender, RoutedEventArgs e)
+    public void CopyFileToClipboard()
     {
       try
       {
@@ -48,7 +45,7 @@ namespace Domain
       _pathContext.Initialize();
     }
 
-    public void OpenFolder(object sender, RoutedEventArgs e)
+    public void OpenFolder()
     {
       try
       {
