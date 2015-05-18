@@ -28,5 +28,22 @@ namespace DomainSpecification
       innerObserver.Received(expectedInnerObserverCallCount).OnChanged(changedPath);
     }
 
+    [Test]
+    public void ShouldNotIssueNotificationWhenNoneOfThePatternsIsMatchedByInput()
+    {
+      //GIVEN
+      var nonMatchablePattern = "*.lolokimono";
+      var innerObserver = Substitute.For<PathChangesObserver>();
+      var filter = new FilteringObserver(innerObserver, nonMatchablePattern);
+      var changedPath = new ChangedPath(Any.String());
+
+      //WHEN
+      filter.OnChanged(changedPath);
+
+      //THEN
+      innerObserver.Received(0).OnChanged(changedPath);
+    }
+
+
   }
 }
