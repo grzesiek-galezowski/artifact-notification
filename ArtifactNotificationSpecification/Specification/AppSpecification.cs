@@ -19,7 +19,7 @@ namespace ArtifactNotificationSpecification.Specification
         var changedPath = new ChangedPath(changedPathDir, changedPathFile);
 
         //WHEN
-        context.FileSystem.ReportChangedPath(changedPathDir, changedPathFile);
+        context.FileSystem.ChangeOccursTo(changedPathDir, changedPathFile);
 
         //THEN
         context.DiagnosticBubble.ShouldDisplayMessageThatThereWasChangeTo(changedPath);
@@ -36,7 +36,7 @@ namespace ArtifactNotificationSpecification.Specification
         var nonTextFileName = Any.StringNotContaining(".txt");
         
         //WHEN
-        context.FileSystem.ReportChangedPath(anyDir, nonTextFileName);
+        context.FileSystem.ChangeOccursTo(anyDir, nonTextFileName);
 
         //THEN
         context.DiagnosticBubble.ShouldNotDisplayAnything();

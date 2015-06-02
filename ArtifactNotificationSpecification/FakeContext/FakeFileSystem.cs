@@ -19,12 +19,12 @@ namespace ArtifactNotificationSpecification.FakeContext
       _handControlledFileSystemWatchers = handControlledFileSystemWatchers;
     }
 
-    public void MakePathExist(ChangedPath anyPath)
+    public void Has(ChangedPath anyPath)
     {
       _systemServices.PathExists(anyPath).Returns(true);
     }
 
-    public void ReportChangedPath(string changedPathDirectory, string changedPathFile)
+    public void ChangeOccursTo(string changedPathDirectory, string changedPathFile)
     {
       _handControlledFileSystemWatchers.OnChanged(new FileSystemEventArgs(
         Any.Instance<WatcherChangeTypes>(), changedPathDirectory, changedPathFile));

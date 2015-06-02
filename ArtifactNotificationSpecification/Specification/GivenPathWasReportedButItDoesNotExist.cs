@@ -21,7 +21,7 @@ namespace ArtifactNotificationSpecification.Specification
       var changedPathDir = Any.String();
       var changedPathFile = Any.String();
 
-      _context.FileSystem.ReportChangedPath(changedPathDir, changedPathFile);
+      _context.FileSystem.ChangeOccursTo(changedPathDir, changedPathFile);
       _context.ClearRecordedEvents();
 
     }
@@ -37,7 +37,7 @@ namespace ArtifactNotificationSpecification.Specification
     }
 
     [Test]
-    public void ShouldCopyItemInPathToClipboardWhenCopyToClipboardIsInvoked()
+    public void ShouldNotCopyItemInPathToClipboardWhenCopyToClipboardIsInvoked()
     {
       //WHEN
       _context.ClientSideInterface.CopyToClipboard();

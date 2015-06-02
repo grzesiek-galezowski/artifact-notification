@@ -86,7 +86,7 @@ namespace PortsSpecification
       //GIVEN
       var window = new LazyMainWindow();
       var innerInstance = Substitute.For<GuiMainWindow>();
-      ;
+      
       window.ForwardAllInvocationsTo(innerInstance);
 
       //WHEN

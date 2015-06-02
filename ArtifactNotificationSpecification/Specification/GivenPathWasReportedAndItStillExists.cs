@@ -21,12 +21,12 @@ namespace ArtifactNotificationSpecification.Specification
       _context.StartApplication();
       var changedPathDir = Any.String();
       var changedPathFile = Any.String();
-      _changedPath = new ChangedPath(changedPathDir, changedPathFile);
+      _changedPath = PathTo(changedPathDir, changedPathFile);
 
-      _context.FileSystem.ReportChangedPath(changedPathDir, changedPathFile);
+      _context.FileSystem.ChangeOccursTo(changedPathDir, changedPathFile);
       _context.ClearRecordedEvents();
 
-      _context.FileSystem.MakePathExist(_changedPath);
+      _context.FileSystem.Has(_changedPath);
     }
 
     [Test]
@@ -49,5 +49,10 @@ namespace ArtifactNotificationSpecification.Specification
       _context.Clipboard.ShouldReceiveItemFrom(_changedPath);
     }
 
+
+    private static ChangedPath PathTo(string changedPathDir, string changedPathFile)
+    {
+      return new ChangedPath(changedPathDir, changedPathFile);
+    }
   }
 }
