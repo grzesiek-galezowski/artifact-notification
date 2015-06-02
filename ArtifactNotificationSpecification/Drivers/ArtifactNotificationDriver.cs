@@ -3,7 +3,6 @@ using ArtifactNotificationSpecification.FakeContext;
 using ArtifactNotificationSpecification.TestDoubles;
 using Domain;
 using NSubstitute;
-using Ports;
 using Ports.Interfaces;
 
 namespace ArtifactNotificationSpecification.Drivers
@@ -13,13 +12,13 @@ namespace ArtifactNotificationSpecification.Drivers
     private UseCases _useCases;
     private ApplicationEventsPresenter _presenter;
     private DiagnosticMessages _diagnosticMessages;
-    private ManuallyTriggerableFileSystemWatchers _handControlledFileSystemWatchers;
+    private ManuallyTriggerableFileSystemWatcher _handControlledFileSystemWatcher;
     private SystemServices _systemServices;
     private string _filters = FilteringObserver.DoNotFilter;
 
     public FakeFileSystem FileSystem
     {
-      get { return new FakeFileSystem(_systemServices, _handControlledFileSystemWatchers); }
+      get { return new FakeFileSystem(_systemServices, _handControlledFileSystemWatcher); }
     }
 
     public FakeDiagnosticBubble DiagnosticBubble
@@ -34,7 +33,7 @@ namespace ArtifactNotificationSpecification.Drivers
 
     public FakeMonitoredPath MonitoredPath
     {
-      get { return new FakeMonitoredPath(_presenter, _handControlledFileSystemWatchers); }
+      get { return new FakeMonitoredPath(_presenter, _handControlledFileSystemWatcher); }
     }
 
     public FakeClientSideInterface ClientSideInterface
@@ -54,9 +53,9 @@ namespace ArtifactNotificationSpecification.Drivers
       _presenter = Substitute.For<ApplicationEventsPresenter>();
       _diagnosticMessages = Substitute.For<DiagnosticMessages>();
       _systemServices = Substitute.For<SystemServices>();
-      _handControlledFileSystemWatchers = new ManuallyTriggerableFileSystemWatchers();
+      _handControlledFileSystemWatcher = new ManuallyTriggerableFileSystemWatcher();
 
-      watchersFactory.CreateFileSystemWatchers(_filters).Returns(_handControlledFileSystemWatchers);
+      watchersFactory.CreateFileSystemWatchers(_filters).Returns(_handControlledFileSystemWatcher);
 
       var compositionRoot = new CompositionRoot(watchersFactory, _systemServices, _filters);
 

@@ -10,7 +10,7 @@ namespace ArtifactNotification
     private readonly FileSystemWatcherFactory _fileSystemWatcherFactory;
     private readonly SystemServices _systemServices;
     private readonly string _filters;
-    private FileSystemWatchers _watchers;
+    private FileSystemWatcher _watcher;
 
     public CompositionRoot(
       FileSystemWatcherFactory fileSystemWatcherFactory, 
@@ -26,7 +26,7 @@ namespace ArtifactNotification
       ApplicationEventsPresenter applicationEventsPresenter, 
       DiagnosticMessages diagnosticMessages)
     {
-      _watchers = FileSystemWatchers();
+      _watcher = FileSystemWatchers();
 
       var applicationUseCases = Synchronized(
         ApplicationUseCases(diagnosticMessages, 
@@ -34,17 +34,17 @@ namespace ArtifactNotification
             applicationEventsPresenter, 
             diagnosticMessages)));
 
-      _watchers.ReportChangesTo(FilteredWith(_filters, applicationUseCases));
+      _watcher.ReportChangesTo(FilteredWith(_filters, applicationUseCases));
       return applicationUseCases;
     }
 
     private PathContext PathOperationsContext(ApplicationEventsPresenter applicationEventsPresenter, DiagnosticMessages diagnosticMessages)
     {
-      return new PathContext(diagnosticMessages, _watchers, applicationEventsPresenter,
+      return new PathContext(diagnosticMessages, _watcher, applicationEventsPresenter,
         new ConcretePathStates(_systemServices, diagnosticMessages, applicationEventsPresenter));
     }
 
-    private FileSystemWatchers FileSystemWatchers()
+    private FileSystemWatcher FileSystemWatchers()
     {
       return _fileSystemWatcherFactory.CreateFileSystemWatchers(_filters);
     }
@@ -66,7 +66,7 @@ namespace ArtifactNotification
 
     public void Dispose()
     {
-      _watchers.Dispose();
+      _watcher.Dispose();
     }
   }
 }

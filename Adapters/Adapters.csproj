@@ -41,7 +41,7 @@
     <Compile Include="CouldNotMonitorSpecifiedPathException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WindowsFileSystemWatcherFactory.cs" />
-    <Compile Include="WindowsFileSystemWatchers.cs" />
+    <Compile Include="WindowsFileSystemWatcher.cs" />
     <Compile Include="WindowsSystemServices.cs" />
   </ItemGroup>
   <ItemGroup>

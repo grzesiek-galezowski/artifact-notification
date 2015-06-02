@@ -1,5 +1,4 @@
-﻿using ArtifactNotification;
-using ArtifactNotificationSpecification.Drivers;
+﻿using ArtifactNotificationSpecification.Drivers;
 using NUnit.Framework;
 using Ports;
 using TddEbook.TddToolkit;

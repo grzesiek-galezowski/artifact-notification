@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace ArtifactNotificationSpecification.Specification
 {
-  public class WhenApplicationIsStarted
+  public class GivenApplicationIsBeingStarted
   {
     private static ArtifactNotificationDriver _context;
 

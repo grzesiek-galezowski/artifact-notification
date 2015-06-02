@@ -1,5 +1,4 @@
 using System.IO;
-using ArtifactNotification;
 using ArtifactNotificationSpecification.TestDoubles;
 using NSubstitute;
 using Ports;
@@ -11,12 +10,12 @@ namespace ArtifactNotificationSpecification.FakeContext
   public class FakeFileSystem
   {
     private readonly SystemServices _systemServices;
-    private readonly ManuallyTriggerableFileSystemWatchers _handControlledFileSystemWatchers;
+    private readonly ManuallyTriggerableFileSystemWatcher _handControlledFileSystemWatcher;
 
-    public FakeFileSystem(SystemServices systemServices, ManuallyTriggerableFileSystemWatchers handControlledFileSystemWatchers)
+    public FakeFileSystem(SystemServices systemServices, ManuallyTriggerableFileSystemWatcher handControlledFileSystemWatcher)
     {
       _systemServices = systemServices;
-      _handControlledFileSystemWatchers = handControlledFileSystemWatchers;
+      _handControlledFileSystemWatcher = handControlledFileSystemWatcher;
     }
 
     public void Has(ChangedPath anyPath)
@@ -26,7 +25,7 @@ namespace ArtifactNotificationSpecification.FakeContext
 
     public void ChangeOccursTo(string changedPathDirectory, string changedPathFile)
     {
-      _handControlledFileSystemWatchers.OnChanged(new FileSystemEventArgs(
+      _handControlledFileSystemWatcher.OnChanged(new FileSystemEventArgs(
         Any.Instance<WatcherChangeTypes>(), changedPathDirectory, changedPathFile));
     }
   }

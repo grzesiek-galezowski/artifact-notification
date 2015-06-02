@@ -2,7 +2,7 @@
 
 namespace Ports.Interfaces
 {
-  public interface FileSystemWatchers : IDisposable
+  public interface FileSystemWatcher : IDisposable
   {
     string Description();
     void ReportChangesTo(PathChangesObserver observer);

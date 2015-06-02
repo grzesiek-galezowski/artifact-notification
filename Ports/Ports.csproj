@@ -38,7 +38,7 @@
     <Compile Include="ChangedPath.cs" />
     <Compile Include="Interfaces\DiagnosticMessages.cs" />
     <Compile Include="Interfaces\FileSystemWatcherFactory.cs" />
-    <Compile Include="Interfaces\FileSystemWatchers.cs" />
+    <Compile Include="Interfaces\FileSystemWatcher.cs" />
     <Compile Include="Interfaces\GuiMainWindow.cs" />
     <Compile Include="LazyMainWindow.cs" />
     <Compile Include="Interfaces\MessageBoxPresenter.cs" />

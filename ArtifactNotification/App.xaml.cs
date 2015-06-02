@@ -45,7 +45,7 @@ namespace ArtifactNotification
 
 }
 
-protected override void OnExit(ExitEventArgs e)
+    protected override void OnExit(ExitEventArgs e)
     {
       _compositionRoot.Dispose();
       base.OnExit(e);

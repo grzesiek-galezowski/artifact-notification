@@ -14,7 +14,7 @@ namespace DomainSpecification
     {
       //GIVEN
       var messages = Substitute.For<DiagnosticMessages>();
-      var watchers = Substitute.For<FileSystemWatchers>();
+      var watchers = Substitute.For<FileSystemWatcher>();
       var presenter = Substitute.For<ApplicationEventsPresenter>();
       var states = Any.Instance<PathStates>();
       string description = Any.String();

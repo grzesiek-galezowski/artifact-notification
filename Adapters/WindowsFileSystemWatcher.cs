@@ -3,16 +3,17 @@ using System.IO;
 using System.Linq;
 using Ports;
 using Ports.Interfaces;
+using FileSystemWatcher = Ports.Interfaces.FileSystemWatcher;
 
 namespace Adapters
 {
-  public class WindowsFileSystemWatchers : FileSystemWatchers
+  public class WindowsFileSystemWatcher : FileSystemWatcher
   {
-    private readonly FileSystemWatcher _watcher;
+    private readonly System.IO.FileSystemWatcher _watcher;
     private readonly string _monitoredPath;
     private readonly string _monitoredFilters;
 
-    public WindowsFileSystemWatchers(FileSystemWatcher watcher, string monitoredPath, string monitoredFilters)
+    public WindowsFileSystemWatcher(System.IO.FileSystemWatcher watcher, string monitoredPath, string monitoredFilters)
     {
       _watcher = watcher;
       _monitoredPath = monitoredPath;

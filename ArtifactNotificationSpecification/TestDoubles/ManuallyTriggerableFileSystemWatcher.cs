@@ -2,15 +2,16 @@
 using Ports;
 using Ports.Interfaces;
 using TddEbook.TddToolkit;
+using FileSystemWatcher = Ports.Interfaces.FileSystemWatcher;
 
 namespace ArtifactNotificationSpecification.TestDoubles
 {
-  public class ManuallyTriggerableFileSystemWatchers : FileSystemWatchers
+  public class ManuallyTriggerableFileSystemWatcher : FileSystemWatcher
   {
     private PathChangesObserver _observer;
     private readonly string _description;
 
-    public ManuallyTriggerableFileSystemWatchers()
+    public ManuallyTriggerableFileSystemWatcher()
     {
       _description = Any.String();
     }

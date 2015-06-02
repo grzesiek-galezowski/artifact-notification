@@ -2,24 +2,25 @@
 using System.IO;
 using Ports;
 using Ports.Interfaces;
+using FileSystemWatcher = Ports.Interfaces.FileSystemWatcher;
 
 namespace Adapters
 {
   public class WindowsFileSystemWatcherFactory : FileSystemWatcherFactory
   {
-    public FileSystemWatchers CreateFileSystemWatchers(string filters)
+    public FileSystemWatcher CreateFileSystemWatchers(string filters)
     {
       var monitoredPath = MonitoredPath();
       try
       {
-        var fileSystemWatcher = new FileSystemWatcher
+        var fileSystemWatcher = new System.IO.FileSystemWatcher
         {
           Path = monitoredPath,
           NotifyFilter = DefaultNotifyFilters(),
           Filter = "*.*",
           IncludeSubdirectories = true,
         };
-        return new WindowsFileSystemWatchers(fileSystemWatcher, monitoredPath, filters);
+        return new WindowsFileSystemWatcher(fileSystemWatcher, monitoredPath, filters);
       }
       catch (ArgumentException e)
       {
